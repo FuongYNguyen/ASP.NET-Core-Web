@@ -1,0 +1,12 @@
+@mixin scale_1_2 {
+    transition: all 0.5s ease-in;
+    &:hover{
+        transform: scale(1.2);
+    }    
+}
+@mixin scale_2 {
+    transition: all 0.5s ease-in;
+    &:hover{
+        transform: scale(2);
+    }    
+}
