@@ -98,18 +98,15 @@
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-2">
                 <div class="popular-product-card card" style="width: 100%;">
                     <div class="text-center">
-                        <img src="~/scss/images/uploads/products/connguoi.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
-                        <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                        <!-- Thêm liên kết vào phần tử <a> -->
+                        <a href="@Url.Action("ListPost", "Post", new { type = 1 })" class="text-decoration-none">
+                            <img src="~/scss/images/uploads/products/connguoi.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
+                            <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                        </a>
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title fs-3 text-break">Con người</h5>
                         <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
-                        <!--<p class="card-text text-secondary fs-5 mt-0 mb-0">Tere Liye</p>
-                        <div>
-                        <a href="#" class="card-link text-decoration-none"><img src="~/scss/images/uploads/products/andre.png" class="card-img-top rounded-circle w-25" alt="" >Andre Syak
-                            <span class="text-secondary text-break fs-6">*1 week ago</span>
-                        </a>
-                        </div>-->
                     </div>
                 </div>
             </div>

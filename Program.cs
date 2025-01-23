@@ -1,5 +1,12 @@
-var builder = WebApplication.CreateBuilder(args);
+using KyNiem50NamWeb.Repository;
+using Microsoft.EntityFrameworkCore;
 
+var builder = WebApplication.CreateBuilder(args);
+//Connected sql
+builder.Services.AddDbContext<DataContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration["ConnectionStrings:ConnectedDb"]);
+});
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 

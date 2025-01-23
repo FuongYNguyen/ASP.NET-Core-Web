@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model KyNiem50NamWeb.Models.Post;
+<section class="detail container mt-4">
+    <div class="detail-contain d-flex flex-wrap justify-content-center">
+        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 col-xxl-3">
+            <div class="detail-contain-img">
+                <div class="popular-product-card card" style="width: 17rem; height: 470px;">
+                    <div class="text-center">
+                        <img src="/assets/scss/images/uploads/products/good_mt.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
+                        <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fs-3 text-break">Selena</h5>
+                        <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-secondary fa-solid fa-star"></i></p>
+                        <p class="card-text text-secondary fs-5 mt-0 mb-0">Tere Liye</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 col-xxl-9">
+            <div class="detail-contain-text w-100">
+                <div class="tiltle ">
+                    <h2 class="fw-bold">@Model.Title</h2>
+                    <p class="text-secondary">By <a href=""></a> Last updated April 22, 2021</p>
+                </div>
+                <div class="contain-body">
+                    <h2>@Model.ContentPost</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>  

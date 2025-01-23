@@ -1,0 +1,17 @@
+﻿@model List<KyNiem50NamWeb.Models.Post>
+
+@{
+    ViewData["Title"] = "Danh sách bài viết";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+
+    @foreach (var post in Model)
+    {
+        <center>
+        <a href="@Url.Action("DetailPost", "Post", new { id=post.Id })" class="text-decoration-none">
+            <h5 class="card-title fs-3 text-break">@post.Title</h5>
+        </a>
+        </center>
+    }
