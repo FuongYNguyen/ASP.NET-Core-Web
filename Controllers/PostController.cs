@@ -18,9 +18,9 @@ namespace KyNiem50NamWeb.Controllers
         // Action để hiển thị danh sách bài viết theo type
         public IActionResult ListPost(int type)
         {
-            // Lọc các bài viết có type = 2
+            // Lọc các bài viết có type = ?
             var posts = _context.Post.Where(p => p.Type == type.ToString()).ToList();
-
+            // 1: Con Nguoi, 2: Kiene thuc, 3: Khon vien truong, 4: Hoạt động, 5: cam nhan 
             // Trả về view và truyền danh sách bài viết
             return View(posts);
         }
@@ -28,6 +28,7 @@ namespace KyNiem50NamWeb.Controllers
         {
             // Lấy bài viết theo Id
             var post = _context.Post.FirstOrDefault(p => p.Id == id);
+           
 
             // Kiểm tra nếu bài viết không tồn tại
             if (post == null)

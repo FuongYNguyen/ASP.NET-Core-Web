@@ -95,81 +95,72 @@
             <!--<p class="view">View all <i class="icon fa-solid text-secondary fa-right-long fw-bold"></i></p>-->
         </div>
         <div class="popular-product d-flex flex-wrap justify-content-center mt-2">
+            
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-2">
-                <div class="popular-product-card card" style="width: 100%;">
-                    <div class="text-center">
-                        <!-- Thêm liên kết vào phần tử <a> -->
-                        <a href="@Url.Action("ListPost", "Post", new { type = 1 })" class="text-decoration-none">
+                <a href="@Url.Action("ListPost", "Post", new { type = 1 })" class="text-decoration-none">
+                    <div class="popular-product-card card" style="width: 100%;">
+					    <div class="text-center">
                             <img src="~/scss/images/uploads/products/connguoi.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
                             <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
-                        </a>
+                       
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-3 text-break">Con người</h5>
+                            <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title fs-3 text-break">Con người</h5>
-                        <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
-                    </div>
-                </div>
+                </a>
             </div>
-
+            
+            
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-2">
-                <div class="popular-product-card card" style="width: 100%;">
-                    <div class="text-center">
-                        <img src="~/scss/images/uploads/products/kientruc.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
-                        <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                <a href="@Url.Action("ListPost", "Post", new { type = 2 })" class="text-decoration-none">
+                    <div class="popular-product-card card" style="width: 100%;">
+                        <div class="text-center">
+                            <img src="~/scss/images/uploads/products/kientruc.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
+                            <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                        
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-3 text-break">Kiến trúc</h5>
+                            <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
+                        </div>
                     </div>
-
-                    <div class="card-body text-center">
-                        <h5 class="card-title fs-3 text-break">Kiến trúc</h5>
-                        <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
-                        <!--<p class="card-text text-secondary fs-5 mt-0 mb-0">Felix Y Siauw</p>
-                        <div>
-                        <a href="#" class="card-link text-decoration-none"><img src="~/scss/images/uploads/products/lucas.png" class="card-img-top rounded-circle w-25" alt="" >John Lucas
-                            <span class="text-secondary text-break fs-6">*05 day ago</span>
-                        </a>
-                        </div>-->
-                    </div>
-                </div>
+                </a>
             </div>
-
+            
+            
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-2">
-                <div class="popular-product-card card" style="width: 100%;">
-                    <div class="text-center">
-                        <img src="~/scss/images/uploads/products/KhuonVien.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
-                        <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                <a href="@Url.Action("ListPost", "Post", new { type = 3 })" class="text-decoration-none">
+                    <div class="popular-product-card card" style="width: 100%;">
+                        <div class="text-center">
+                            <img src="~/scss/images/uploads/products/KhuonVien.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
+                            <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-3 text-break">Khuôn viên trường</h5>
+                            <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title fs-3 text-break">Khuôn viên trường</h5>
-                        <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
-                        <!--<p class="card-text text-secondary fs-5 mt-0 mb-0">Tere Liye</p>
-                        <div>
-                        <a href="#" class="card-link text-decoration-none"><img src="~/scss/images/uploads/products/ade.png" class="card-img-top rounded-circle w-25" alt="" >Bakark
-                            <span class="text-secondary text-break fs-6">*6 month ago</span>
-                        </a>
-                        </div>-->
-                    </div>
-                </div>
+                </a>
             </div>
-
+            
+            
             <div class="col-12 col-sm-12 col-md-6 col-lg-3 p-2">
-                <div class="popular-product-card card" style="width: 100%;">
-                    <div class="text-center">
-                        <img src="~/scss/images/uploads/products/hoatdong.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
-                        <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                <a href="@Url.Action("ListPost", "Post", new { type = 4 })" class="text-decoration-none">
+                    <div class="popular-product-card card" style="width: 100%;">
+                        <div class="text-center">
+                            <img src="~/scss/images/uploads/products/hoatdong.jpg" class="card-img-top rounded w-75 img-thumbnail mt-3" alt="popular_1">
+                            <i class="icon-new fa-solid fa-bookmark text-danger fs-4"></i>
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title fs-3 text-break">Hoạt động</h5>
+                            <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
+                        </div>
                     </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title fs-3 text-break">Hoạt động</h5>
-                        <p class="mt-0 mb-0"><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i><i class="text-danger fa-solid fa-star"></i></p>
-                        <!--<p class="card-text text-secondary fs-5 mt-0 mb-0">Felix Y Siauw</p>
-                        <div>
-                        <a href="#" class="card-link text-decoration-none"><img src="~/scss/images/uploads/products/ryan.png" class="card-img-top rounded-circle w-25" alt="" >Rayan Dewa
-                            <span class="text-secondary text-break fs-6">*1 week ago</span>
-                        </a>
-                        </div>-->
-                    </div>
-                </div>
+               </a>
             </div>
-
-
+            
         </div>
     </section>
 
@@ -286,7 +277,9 @@
             <h1 class="item">
                 Chia sẻ cảm nhận
             </h1>
+            <a href="@Url.Action("ListPost", "Post", new { type = 5 })" class="text-decoration-none">
             <p class="view">Xem thêm <i class="icon fa-solid text-secondary fa-right-long fw-bold"></i></p>
+            </a>
         </div>
     </section>
     <!--author-->
