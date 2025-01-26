@@ -22,12 +22,6 @@ namespace KyNiem50NamWeb.Repository
                 .WithMany(u => u.Posts) // User có thể tạo nhiều bài viết
                 .HasForeignKey(p => p.CreatedByUserID)
                 .OnDelete(DeleteBehavior.Restrict); // Không xóa Post khi xóa User 
-
-            modelBuilder.Entity<Post>()
-                .HasOne(p => p.ModifiedByUser)
-                .WithMany()
-                .HasForeignKey(p => p.ModifiedByUserID)
-                .OnDelete(DeleteBehavior.Restrict); 
         }
     }
 }

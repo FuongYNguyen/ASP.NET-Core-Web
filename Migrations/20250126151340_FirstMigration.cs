@@ -37,10 +37,10 @@ namespace KyNiem50NamWeb.Migrations
                     CreatedBy = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
                     ModifiedDate = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ModifiedBy = table.Column<string>(type: "nvarchar(200)", maxLength: 200, nullable: true),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Type = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     CreatedByUserID = table.Column<int>(type: "int", nullable: false),
-                    ModifiedByUserID = table.Column<int>(type: "int", nullable: false)
+                    ModifiedByUserID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -51,23 +51,12 @@ namespace KyNiem50NamWeb.Migrations
                         principalTable: "User",
                         principalColumn: "UserID",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Post_User_ModifiedByUserID",
-                        column: x => x.ModifiedByUserID,
-                        principalTable: "User",
-                        principalColumn: "UserID",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Post_CreatedByUserID",
                 table: "Post",
                 column: "CreatedByUserID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Post_ModifiedByUserID",
-                table: "Post",
-                column: "ModifiedByUserID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

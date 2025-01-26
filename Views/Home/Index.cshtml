@@ -4,7 +4,7 @@
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+@model List<KyNiem50NamWeb.Models.Post>
 <!--menu nav-->
 <nav class="header-menu">
     <ul class="header-menu-wrap">
@@ -285,43 +285,24 @@
     <!--author-->
     <section class="dad_author container">
         <div class="author">
-            <div class="author-eka">
-                <div class="author-eka-title h-100 w-100 d-flex flex-column justify-content-center">
-                    <h4 class="fw-bold">Huỳnh Thị Ánh Nhi</h4>
-                    <p class="text-secondary fs-6">Từ học sinh giởi Quốc gia đến chinh phục ước mơ tại DUE</p>
+            @foreach (var post in Model){
+                
+                <div class="author-eka">
+                    <a href="@Url.Action("DetailPost", "Post", new { id=post.Id })" class="text-decoration-none">
+                        <div class="author-eka-title h-100 w-100 d-flex flex-column justify-content-center">
+                            <h4 class="fw-bold">@post.Title</h4>
+                            <p class="text-secondary fs-6">@post.ContentPost</p>
+                        </div>
+                        <div class="author-eka-img">
+                            <img src="@post.Image" class="img-keka img-fluid" alt="" />
+                        </div>
+                        <div class="author-eka-quote">
+                            <i class="fa-sharp fa-solid fa-quote-right"></i>
+                        </div>
+                    </a>
                 </div>
-                <div class="author-eka-img">
-                    <img src="~/scss/images/uploads/products/author_keka.png" class="img-keka img-fluid" alt="" />
-                </div>
-                <div class="author-eka-quote">
-                    <i class="fa-sharp fa-solid fa-quote-right"></i>
-                </div>
-            </div>
-            <div class="author-hazar">
-                <div class="author-hazar-title h-100 w-100 d-flex flex-column justify-content-center">
-                    <h4 class="fw-bold">Riwan Berahal</h4>
-                    <p class="text-secondary fs-6">Dám bước ra khỏi vùng an toàn để phát triển toàn diện bản thân</p>
-                </div>
-                <div class="author-hazar-img">
-                    <img src="~/scss/images/uploads/products/author_haza.png" class="img-hazar img-fluid" alt="" />
-                </div>
-                <div class="author-hazar-quote">
-                    <i class="fa-sharp fa-solid fa-quote-right"></i>
-                </div>
-            </div>
-            <div class="author-khoe">
-                <div class="author-khoe-title h-100 w-100 d-flex flex-column justify-content-center">
-                    <h4 class="fw-bold">Nguyễn Trần Khánh Phương</h4>
-                    <p class="text-secondary fs-6">DUE: Nơi chắp cánh ước mơ cho sinh viên</p>
-                </div>
-                <div class="author-khoe-img">
-                    <img src="~/scss/images/uploads/products/author_khoe.png" class="img-khoe img-fluid" alt="" />
-                </div>
-                <div class="author-khoe-quote">
-                    <i class="fa-sharp fa-solid fa-quote-right"></i>
-                </div>
-            </div>
+                
+            }
         </div>
-
     </section>
 </main>

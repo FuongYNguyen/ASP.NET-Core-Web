@@ -24,20 +24,17 @@ namespace KyNiem50NamWeb.Models
         [StringLength(200)]
         public string? ModifiedBy { get; set; }
 
-        public string Image { get; set; }
+        public string? Image { get; set; }
 
         [StringLength(50)]
         public string Type { get; set; }
 
         // Các khóa ngoại tham chiếu đến User
         public int CreatedByUserID { get; set; }
-        public int ModifiedByUserID { get; set; }
+        public int? ModifiedByUserID { get; set; }
 
         // Các thuộc tính điều hướng
         [ForeignKey("CreatedByUserID")]
         public virtual User CreatedByUser { get; set; }
-
-        [ForeignKey("ModifiedByUserID")]
-        public virtual User ModifiedByUser { get; set; }
     }
 }

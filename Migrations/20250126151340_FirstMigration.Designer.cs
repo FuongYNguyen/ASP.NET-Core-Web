@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KyNiem50NamWeb.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20250123031141_FirstMigration")]
+    [Migration("20250126151340_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -47,14 +47,13 @@ namespace KyNiem50NamWeb.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Image")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ModifiedBy")
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<int>("ModifiedByUserID")
+                    b.Property<int?>("ModifiedByUserID")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedDate")
@@ -73,8 +72,6 @@ namespace KyNiem50NamWeb.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedByUserID");
-
-                    b.HasIndex("ModifiedByUserID");
 
                     b.ToTable("Post");
                 });
@@ -120,15 +117,7 @@ namespace KyNiem50NamWeb.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("KyNiem50NamWeb.Models.User", "ModifiedByUser")
-                        .WithMany()
-                        .HasForeignKey("ModifiedByUserID")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("CreatedByUser");
-
-                    b.Navigation("ModifiedByUser");
                 });
 
             modelBuilder.Entity("KyNiem50NamWeb.Models.User", b =>
