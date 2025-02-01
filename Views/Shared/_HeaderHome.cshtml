@@ -1,22 +1,46 @@
 ﻿<div class="header">
     <div class="logo-name">
         <div class="logo">
-            <img src="~/scss/images/icons/logoDUE.jpg"
-                 class="img-fluid"
-                 alt="" />
+            <img src="~/scss/images/icons/logoDUE.jpg" class="img-fluid" alt="" />
         </div>
         <div class="event-name">
             <span class="logo-title-blue">50 năm</span><span class="logo-title-red"> DUE</span>
         </div>
     </div>
 
-    <div class="search ">
+    <div class="search">
         <input class="search-text form-control" type="search" placeholder="Nhập thông tin cần tìm kiếm" aria-label="Search">
         <i class="search-icon fa-solid fa-magnifying-glass"></i>
     </div>
+
     <div class="icon-header">
-        <!-- <i class="info-heart fa-regular fa-heart"></i> -->
-        <i class="info-user fa-solid fa-user"></i>
-        <!-- <i class="info-lang fa-solid fa-earth-americas"></i>                                      -->
+        @if (Context.Session.GetString("username") != null)
+        {
+            <!-- Nếu đã đăng nhập, hiển thị nút đăng xuất -->
+            <form action="/User/Logout" method="post">
+                <button type="submit" class="logout-btn">Đăng xuất</button>
+            </form>
+        }
+        else
+        {
+            <!-- Nếu chưa đăng nhập, hiển thị nút đăng nhập -->
+            <i class="info-user fa-solid fa-user" onclick="togglePopup()"></i>
+
+            <!-- Popup đăng nhập -->
+            <div id="loginPopup" class="login-popup">
+                <div class="login-box">
+                    <form action="/User/Authenticate" method="post">
+                        <input type="text" name="Username" id="Username" class="form-control" placeholder="Tên đăng nhập">
+                        <input type="password" name="Password" id="Password" class="form-control" placeholder="Mật khẩu">
+                        <div class="remember-me">
+                            <input type="checkbox" id="rememberMe">
+                            <label for="rememberMe">Ghi nhớ tài khoản</label>
+                        </div>
+                        <button class="login-btn" type="submit">LOGIN</button>
+                    </form>
+                    <a href="#" class="forgot-password">Quên mật khẩu?</a>
+                </div>
+            </div>
+        }
     </div>
 </div>

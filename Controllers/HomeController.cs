@@ -1,4 +1,5 @@
-﻿using KyNiem50NamWeb.Models;
+﻿using KyNiem50NamWeb.App_Start;
+using KyNiem50NamWeb.Models;
 using KyNiem50NamWeb.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -15,8 +16,18 @@ namespace KyNiem50NamWeb.Controllers
         }
 
         // Action để hiển thị danh sách bài viết theo type
+       
         public IActionResult Index()
         {
+            // Kiểm tra session trong action method
+            var username = HttpContext.Session.GetString("username");
+
+            // Nếu có session, điều hướng đến trang Admin
+            if (username != null)
+            {
+                return RedirectToAction("Index", "Admin");  // Điều hướng đến Admin
+            }
+
             string type = "5";
             try
             {
@@ -30,11 +41,9 @@ namespace KyNiem50NamWeb.Controllers
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error: {ex.Message}");
-                return View(new List<Post>()); 
+                return View(new List<Post>());
             }
-
         }
-
 
     }
 }

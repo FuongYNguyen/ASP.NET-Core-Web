@@ -3,6 +3,7 @@ using KyNiem50NamWeb.Repository;
 using KyNiem50NamWeb.Models;
 using System.Linq;
 using System;
+using Microsoft.IdentityModel.Tokens;
 
 namespace KyNiem50NamWeb.Controllers
 {
@@ -39,6 +40,38 @@ namespace KyNiem50NamWeb.Controllers
             // Trả về view và truyền bài viết
             return View(post);
         }
+        // them
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult CreatePost(Post post)
+        {
+            post.CreatedDate = DateTime.Now;
+            string? username = HttpContext.Session.GetString("username");
+            int? id = HttpContext.Session.GetInt32("id");
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(id.ToString()))
+            {
+                ModelState.AddModelError("", "Bạn chưa đăng nhập.");
+                return RedirectToAction("Index", "Admin");
+            }
+
+            post.CreatedBy = username;
+            post.CreatedByUserID = (int)id; // Cần thay thế bằng UserID thật từ session/auth
+
+            try
+            {
+                _context.Post.Add(post);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Admin");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Lỗi khi lưu vào cơ sở dữ liệu: {ex.Message}");
+                return RedirectToAction("Index", "Admin");
+            }
+        }
+
+
+
 
     }
 }
