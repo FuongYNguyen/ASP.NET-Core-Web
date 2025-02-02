@@ -25,22 +25,32 @@ namespace KyNiem50NamWeb.Controllers
             // Trả về view và truyền danh sách bài viết
             return View(posts);
         }
-        public IActionResult DetailPost(int id)
-        {
-            // Lấy bài viết theo Id
-            var post = _context.Post.FirstOrDefault(p => p.Id == id);
-           
 
-            // Kiểm tra nếu bài viết không tồn tại
+        //get 
+        [HttpGet]
+        [Route("Post/GetPost")]
+        public IActionResult GetPost(int id, bool isDetail = false)
+        {
+            var post = _context.Post.FirstOrDefault(p => p.Id == id);
+
             if (post == null)
             {
-                return NotFound(); // Trả về lỗi 404 nếu không tìm thấy bài viết
+                return NotFound();
             }
 
-            // Trả về view và truyền bài viết
-            return View(post);
+            if (isDetail)
+            {
+                // Trả về View postDetail cho trang chi tiết bài viết
+                return View("DetailPost", post);
+            }
+            else
+            {
+                // Trả về JSON cho trang quản lý bài viết
+                return Json(post);
+            }
         }
-        // them
+
+        // add
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult CreatePost(Post post)
@@ -69,8 +79,71 @@ namespace KyNiem50NamWeb.Controllers
                 return RedirectToAction("Index", "Admin");
             }
         }
+        //mod
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ModifyPost(int id, Post modifiedPost)
+        {
+            var existingPost = _context.Post.FirstOrDefault(p => p.Id == id);
 
+            if (existingPost == null)
+            {
+                return NotFound(); 
+            }
 
+            existingPost.Title = modifiedPost.Title;
+            existingPost.ContentPost = modifiedPost.ContentPost;
+            existingPost.Type = modifiedPost.Type;
+            existingPost.ModifiedDate = DateTime.Now;
+
+            string? username = HttpContext.Session.GetString("username");
+            int? userId = HttpContext.Session.GetInt32("id");
+            if (string.IsNullOrEmpty(username) || userId == null)
+            {
+                ModelState.AddModelError("", "Bạn chưa đăng nhập.");
+                return RedirectToAction("Index", "Admin");
+            }
+
+            existingPost.ModifiedBy = username;
+            existingPost.ModifiedByUserID = (int)userId;
+
+            try
+            {
+                _context.Post.Update(existingPost);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Admin");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Lỗi khi lưu vào cơ sở dữ liệu: {ex.Message}");
+                return RedirectToAction("Index", "Admin");
+            }
+        }
+
+        //delete
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult DeletePost(int id)
+        {
+            var post = _context.Post.FirstOrDefault(p => p.Id == id);
+
+            if (post == null)
+            {
+                return NotFound(); 
+            }
+
+            try
+            {
+                _context.Post.Remove(post);
+                _context.SaveChanges();
+                return RedirectToAction("Index", "Admin");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Lỗi khi xóa bài viết: {ex.Message}");
+                return RedirectToAction("Index", "Admin");
+            }
+        }
 
 
     }

@@ -7,11 +7,12 @@
 <h1>@ViewData["Title"]</h1>
 
 
-    @foreach (var post in Model)
-    {
-        <center>
-        <a href="@Url.Action("DetailPost", "Post", new { id=post.Id })" class="text-decoration-none">
+@foreach (var post in Model)
+{
+    <center>
+        <a href="@Url.Action("GetPost", "Post", new { id = post.Id, isDetail = true })" class="text-decoration-none">
             <h5 class="card-title fs-3 text-break">@post.Title</h5>
         </a>
-        </center>
-    }
+    </center>
+}
+

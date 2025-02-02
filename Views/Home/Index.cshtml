@@ -288,7 +288,7 @@
             @foreach (var post in Model){
                 
                 <div class="author-eka">
-                    <a href="@Url.Action("DetailPost", "Post", new { id=post.Id })" class="text-decoration-none">
+                    <a href="@Url.Action("GetPost", "Post", new { id=post.Id })" class="text-decoration-none">
                         <div class="author-eka-title h-100 w-100 d-flex flex-column justify-content-center">
                             <h4 class="fw-bold">@post.Title</h4>
                             <p class="text-secondary fs-6">@post.ContentPost</p>
