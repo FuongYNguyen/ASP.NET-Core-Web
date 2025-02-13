@@ -1,4 +1,5 @@
-﻿using KyNiem50NamWeb.Repository;
+﻿using KyNiem50NamWeb.Models;
+using KyNiem50NamWeb.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -20,10 +21,15 @@ namespace KyNiem50NamWeb.Controllers
         }
 
         [HttpPost]
-        public IActionResult Authenticate(string Username, string Password)
+        public IActionResult Authenticate(User model)
         {
+            if (model == null || string.IsNullOrEmpty(model.Username) || string.IsNullOrEmpty(model.Password))
+            {
+                ViewBag.ErrorMessage = "Vui lòng nhập đầy đủ thông tin đăng nhập.";
+                return RedirectToAction("Index", "Home");
+            }
             // Kiểm tra sự tồn tại của tài khoản
-            var account = _context.User.SingleOrDefault(tk => tk.Username == Username && tk.Password == Password);
+            var account = _context.User.SingleOrDefault(tk => tk.Username == model.Username && tk.Password == model.Password);
             if (account != null)
             {
                 // Lưu thông tin vào Session
